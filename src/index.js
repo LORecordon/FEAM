@@ -14,11 +14,13 @@ import {
 } from '@apollo/client';
 import {AUTH_TOKEN} from "./constants";
 
+import LogIn from './components/LogIn/LogIn';
+
 const authLink = setContext((_, {headers}) => {
     return {
         headers: {
             ...headers,
-            Authorization: `Bearer ${AUTH_TOKEN}`,
+            Authorization: localStorage.getItem("token") || "",
             // accessControlAllowOrigin: '*',
             // accessControlAllowHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
         }
@@ -26,7 +28,7 @@ const authLink = setContext((_, {headers}) => {
 });
 
 const hostname = window.location.hostname;
-const baseUrl = `http://${hostname}:9090/`
+const baseUrl = `http://${hostname}:3000/`
 let gqlUrl = `${baseUrl}/api/v1/graphql`;
 
 const gqlHTTPLink = createHttpLink({
@@ -38,6 +40,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache({
     },),
 });
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

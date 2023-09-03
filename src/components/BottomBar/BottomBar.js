@@ -48,6 +48,7 @@ function BottomBar(props) {
                 value="friends"
                 onClick={() => navigate('/friends')}
                 icon={<GroupsIcon />} />
+            
         </BottomNavigation>
     );
 }
