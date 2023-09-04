@@ -46,6 +46,26 @@ async function gettok(uuu, ppp){
         return false
     }
 }
+//FETCH CORRECTO
+async function getttok(uuu, ppp){
+  const creds = btoa(`${uuu}:${ppp}`);
+  try {const res = await fetch("http://localhost:3000/api/v1/api-keys", {
+    method: "POST",
+    headers: {
+      "Authorization": `Basic ${creds}`
+    }
+  })
+  const ttt = await res.json()
+  const token = ttt.token
+  localStorage.setItem("token",`Bearer ${token}`)
+  localStorage.setItem("email", uuu)
+  return true;
+  } catch (err) {
+      console.log("error")
+      console.log(err)
+      return false
+  }
+}
 
 const defaultTheme = createTheme();
 
@@ -59,7 +79,7 @@ export default function LogIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    const ddd = gettok(data.get("email"), data.get("password"))
+    const ddd = getttok(data.get("email"), data.get("password"))
     if (ddd){
       navigate("/")
     }

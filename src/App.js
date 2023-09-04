@@ -14,6 +14,7 @@ import MapPage from "./components/MapPage/MapPage";
 import SearchPage from "./components/SearchPage/SearchPage";
 import Profile from './components/LogIn/Profile';
 import LogIn from './components/LogIn/LogIn';
+import TripPage from './components/TripPage/TripPage';
 
 
 
@@ -32,7 +33,7 @@ function App() {
                         <Route exact path="/map" element={<MapPage />} />
                         <Route exact path="/search" element={<SearchPage />} />
                         <Route exact path="/login" element={<LogIn />} />
-
+                        <Route path="/trip/:id" element={<TripPage />} />
                        
 
                     </Routes>

@@ -16,7 +16,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 }));
 
-let email = "audie_johns@schuppe.name";
+let email = localStorage.getItem("email") || "";
+
 
 const GET_DATA = gql`
 query {
@@ -62,10 +63,27 @@ function TripsPage(props, { email }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isScrollingUp, isScrollingDown])
 
+
     const navigate = useNavigate();
 
+    const handleClick = (event) => {
+        let tripid = event.currentTarget.id
+        const objtt = data?.user?.trips.find(obj => obj.id === tripid)
+        const probj = JSON.stringify(objtt)
+        navigate(`/trip/${tripid}`)
+    };
+
     if (loading) return <CircularProgress />;
-    if (error) return <h1>Error: {error.message}</h1>;
+    if (error) {
+        try {
+            if (localStorage.getItem("email").length !== 0){
+                return <h1>Error: {error.message}</h1>
+            } 
+            return <h1> Error: Make sure to log in</h1>
+        } catch {
+            return <h1> Error: Make sure to log in</h1>
+        }
+    }
 
     return (
         <>
@@ -86,11 +104,9 @@ function TripsPage(props, { email }) {
                     <React.Fragment>
 
                         {data?.user?.trips?.map((trip) => (
-
-                            <Item key={trip.id} trip={trip} >
+                            <Item id={trip.id} key={trip.id} trip={trip} onClick={handleClick}>
                                 <TripCard trip={trip} />
                             </Item>
-
                         ))}
 
                     </React.Fragment>
