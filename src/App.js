@@ -15,6 +15,7 @@ import SearchPage from "./components/SearchPage/SearchPage";
 import Profile from './components/LogIn/Profile';
 import LogIn from './components/LogIn/LogIn';
 import TripPage from './components/TripPage/TripPage';
+import TripsNew from './components/TripsPage/TripsNew';
 
 
 
@@ -25,7 +26,6 @@ function App() {
             <HashRouter>
                 <div className="App__content">
                     <TopNav />
-                    <h1></h1>
                     <Routes>
                         <Route exact path="/" element={<HomePage />} />
                         <Route exact path="/trips" element={<TripsPage />} />
@@ -34,6 +34,7 @@ function App() {
                         <Route exact path="/search" element={<SearchPage />} />
                         <Route exact path="/login" element={<LogIn />} />
                         <Route path="/trip/:id" element={<TripPage />} />
+                        <Route path="/tripsnew" element={<TripsNew />} />
                        
 
                     </Routes>

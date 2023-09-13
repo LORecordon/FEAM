@@ -73,6 +73,11 @@ function TripsPage(props, { email }) {
         navigate(`/trip/${tripid}`)
     };
 
+    const handleNewTrip = () => {
+        console.log("New trip");
+        navigate('/tripsnew');
+    }
+
     if (loading) return <CircularProgress />;
     if (error) {
         try {
@@ -88,7 +93,7 @@ function TripsPage(props, { email }) {
     return (
         <>
             <div className={"GroupStack"} >
-                <Fab color="primary" aria-label="add" className={"NewTripFab"} id={"NewTrip"} variant={ext}>
+                <Fab color="primary" onClick={handleNewTrip} aria-label="add" className={"NewTripFab"} id={"NewTrip"} variant={ext}>
                     <AddIcon /> <div id={"NewTripText"} >{nt}</div>
                 </Fab>
 

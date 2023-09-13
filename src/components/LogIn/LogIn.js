@@ -29,7 +29,7 @@ function Copyright(props) {
 
 // Cambiar el tipo de fetch!!!!!!!!
 async function gettok(uuu, ppp){
-    try {const res = await fetch("http://localhost:3000/api/v1/api-keys", {
+    try {const res = await fetch("http://192.168.10.151:3000/api/v1/api-keys", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
@@ -49,7 +49,7 @@ async function gettok(uuu, ppp){
 //FETCH CORRECTO
 async function getttok(uuu, ppp){
   const creds = btoa(`${uuu}:${ppp}`);
-  try {const res = await fetch("http://localhost:3000/api/v1/api-keys", {
+  try {const res = await fetch("http://192.168.10.151:3000/api/v1/api-keys", {
     method: "POST",
     headers: {
       "Authorization": `Basic ${creds}`
@@ -57,6 +57,7 @@ async function getttok(uuu, ppp){
   })
   const ttt = await res.json()
   const token = ttt.token
+  console.log(token)
   localStorage.setItem("token",`Bearer ${token}`)
   localStorage.setItem("email", uuu)
   return true;

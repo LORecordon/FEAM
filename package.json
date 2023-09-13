@@ -10,10 +10,13 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.5",
     "@mui/styles": "^5.11.2",
+    "@reach/combobox": "^0.18.0",
+    "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "cors": "^2.8.5",
+    "google-map-react": "^2.2.1",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "material-ui-animated-fab": "^1.0.3",
@@ -22,10 +25,11 @@
     "react-scripts": "^5.0.1",
     "react-use-scroll-direction": "^0.1.0",
     "subscriptions-transport-ws": "^0.11.0",
+    "use-places-autocomplete": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=7890 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
