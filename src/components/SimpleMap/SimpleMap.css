@@ -9,10 +9,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+    align-items: center;
     gap: 5px;
     padding: 8px;
-    width: 90%;
-    height: 70vh;
+    width: 100%;
+    height: 77vh;
     background-color: rgb(31, 42, 78);
     border: 5px solid gold;
     border-radius: 8px;
@@ -26,32 +28,37 @@ body {
 }
 
 .map-submit{
-    width: 60px;
-    height: 40px;
+    padding: 5px;
+    width: 140px;
     border-radius: 10px;
-    background-color: aquamarine;
-    color: black;
+    background-color: rgb(234, 255, 0);
+    color: rgb(59, 0, 0);
     margin: 0;
+    font-size: large;
+    font-weight: bold;
+    color: rgb(118, 4, 4);
 }
 
 .map-inputs{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     padding: 2px;
 }
 
 .search-container{
     height: 35px;
     width: 100%;
+    z-index: 90;
 }
 
 .search-box{
     height: 38px;
-    flex: 1;
+    width: 100%;
     margin: 0;
-    margin-right: 10px;
     background-color: rgb(192, 255, 231);
     border: 4px solid rgb(162, 158, 79);
+    border-radius: 8px;
 }
 
 .gm-fullscreen-control {
@@ -60,3 +67,59 @@ body {
 .gmnoprint {
     display: none!important;
 }
+
+.or-inputs{
+    color:rgb(118, 4, 4);
+    padding: 0;
+    margin: 0;
+}
+
+.comboboxinput{
+    width: 100%;
+    border: 4px solid gold;
+    border-radius: 8px;
+    margin: 0;
+}
+.comboboxinput:focus{
+    border: 4px solid rgb(226, 255, 7);
+    outline: none;
+}
+.suggestions-ls{
+    margin: 0;
+    background-color: #e4fbff;
+    color: rgb(100, 78, 0);
+    z-index: 100;
+    border: 2px solid rgb(0, 0, 0);
+    
+}
+
+.create-location{
+    position: absolute;
+    top: 85px;
+    text-align: center;
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 250, 161);
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 9px;
+    border-radius: 8px;
+    z-index: 90;
+}
+
+.pop-close-button{
+    position: absolute;
+    top: 0px;
+    left: 48%;
+    z-index: 100;
+    background-color: rgb(255, 250, 161);
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0;
+}
+
