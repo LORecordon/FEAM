@@ -77,7 +77,7 @@ function TripsPage(props, { email }) {
         console.log("New trip");
     }
 
-    if (loading) return <CircularProgress />;
+    if (loading) return <div> <CircularProgress /> </div>;
     if (error) {
         try {
             if (localStorage.getItem("email").length !== 0){
