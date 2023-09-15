@@ -297,7 +297,7 @@ const CreateLocation = ({countryName, position, handleClose, setMarkers, markers
 }
 
 async function postNewLocation({destination, handleClose, setUploadError, setUploading, setMarkers, markers }){
-    fetch('http://192.168.10.151:3000/api/v1/destinations', {
+    fetch('http://172.20.10.4:3000/api/v1/destinations', {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem("token")
@@ -336,7 +336,7 @@ async function postNewLocation({destination, handleClose, setUploadError, setUpl
 //Functions to load markers
 
 async function allDestinations(setMarkers, setLoadingMarkers){
-    const res = await fetch("http://192.168.10.151:3000/api/v1/destinations", {
+    const res = await fetch("http://172.20.10.4:3000/api/v1/destinations", {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem("token")

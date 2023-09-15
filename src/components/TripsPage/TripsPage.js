@@ -75,6 +75,7 @@ function TripsPage(props, { email }) {
 
     const handleNewTrip = () => {
         console.log("New trip");
+        navigate('/tripsnew')
     }
 
     if (loading) return <div> <CircularProgress /> </div>;

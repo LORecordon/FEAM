@@ -15,7 +15,7 @@ export default function TripPage(){
     const [pendingDests, setPendingDests] = useState(false);
 
     useEffect(() => {
-        const api = `http://192.168.10.151:3000/api/v1/trips/${tripData.id}`
+        const api = `http://172.20.10.4:3000/api/v1/trips/${tripData.id}`
         fetch(api, {
             method: "GET",
             headers: {
@@ -64,7 +64,7 @@ export default function TripPage(){
 }
 
 async function getTripPosts(tripID, tripPosts, setTripPosts){
-    const api = `http://192.168.10.151:3000/api/v1/trips/${tripID}/posts`
+    const api = `http://172.20.10.4:3000/api/v1/trips/${tripID}/posts`
     fetch(api, {
         method: "GET",
         headers: {
@@ -88,7 +88,7 @@ async function getTripPosts(tripID, tripPosts, setTripPosts){
 }
 
 async function getDestinations(tripID, setDestinations, setPendingDests){
-    const api = `http://192.168.10.151:3000/api/v1/trips/${tripID}/destinations`
+    const api = `http://172.20.10.4:3000/api/v1/trips/${tripID}/destinations`
     fetch(api, {
         method: "GET",
         headers: {
