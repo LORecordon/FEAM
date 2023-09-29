@@ -14,6 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
+import {API_URL} from "../../constants";
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,7 +31,7 @@ function Copyright(props) {
 
 // Cambiar el tipo de fetch!!!!!!!!
 async function gettok(uuu, ppp){
-    try {const res = await fetch("http://172.20.10.4:3000/api/v1/api-keys", {
+    try {const res = await fetch(`http://${API_URL}:3000/api/v1/api-keys`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
@@ -49,7 +51,7 @@ async function gettok(uuu, ppp){
 //FETCH CORRECTO
 async function getttok(uuu, ppp){
   const creds = btoa(`${uuu}:${ppp}`);
-  try {const res = await fetch("http://172.20.10.4:3000/api/v1/api-keys", {
+  try {const res = await fetch(`http://${API_URL}:3000/api/v1/api-keys`, {
     method: "POST",
     headers: {
       "Authorization": `Basic ${creds}`
@@ -57,10 +59,15 @@ async function getttok(uuu, ppp){
   })
   const ttt = await res.json()
   const token = ttt.token
-  console.log(token)
-  localStorage.setItem("token",`Bearer ${token}`)
-  localStorage.setItem("email", uuu)
-  return true;
+  if (token){
+    localStorage.setItem("token",`Bearer ${token}`)
+    localStorage.setItem("email", uuu)
+    return true;
+  }
+  else{
+    return false
+  }
+
   } catch (err) {
       console.log("error")
       console.log(err)

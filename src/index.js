@@ -12,9 +12,8 @@ import {
     createHttpLink,
     InMemoryCache
 } from '@apollo/client';
-import {AUTH_TOKEN} from "./constants";
+import {AUTH_TOKEN, API_URL} from "./constants";
 
-import LogIn from './components/LogIn/LogIn';
 
 const authLink = setContext((_, {headers}) => {
     return {
@@ -27,7 +26,7 @@ const authLink = setContext((_, {headers}) => {
     };
 });
 
-const hostname = "172.20.10.4";
+const hostname = API_URL;
 const baseUrl = `http://${hostname}:3000/`
 let gqlUrl = `${baseUrl}/api/v1/graphql`;
 

@@ -12,11 +12,12 @@ import HomePage from "./components/HomePage/HomePage";
 import FriendsPage from "./components/FriendsPage/FriendsPage";
 import MapPage from "./components/MapPage/MapPage";
 import SearchPage from "./components/SearchPage/SearchPage";
-import Profile from './components/LogIn/Profile';
 import LogIn from './components/LogIn/LogIn';
 import TripPage from './components/TripPage/TripPage';
 import TripsNew from './components/TripsPage/TripsNew';
-
+import Profile from './components/Profile/Profile';
+import FriendshipTokenHandler from './components/FTH/FTH';
+import PostPage from './components/PostPage/PostPage';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     return (
         <div className="App">
             <HashRouter>
+            <FriendshipTokenHandler />
                 <div className="App__content">
                     <TopNav />
                     <Routes>
@@ -35,6 +37,8 @@ function App() {
                         <Route exact path="/login" element={<LogIn />} />
                         <Route path="/trip/:id" element={<TripPage />} />
                         <Route path="/tripsnew" element={<TripsNew />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/post/:id" element={<PostPage />} />
                        
 
                     </Routes>

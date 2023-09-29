@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 import SimpleMap from "../SimpleMap/SimpleMap";
+import {API_URL} from "../../constants";
+import PostCard from "./PostCard/PostCard";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,7 +18,7 @@ export default function TripPage(){
     const [pendingDests, setPendingDests] = useState(false);
 
     useEffect(() => {
-        const api = `http://172.20.10.4:3000/api/v1/trips/${tripData.id}`
+        const api = `http://${API_URL}:3000/api/v1/trips/${tripData.id}`
         fetch(api, {
             method: "GET",
             headers: {
@@ -30,13 +33,18 @@ export default function TripPage(){
         }).then((data) => {
             setTripD(data);
             //not neede (yet)
-            //getTripPosts(tripData.id, setTripPosts);
+            getTripPosts(tripData.id, tripPosts, setTripPosts);
             setPendingDests(true)
             getDestinations(tripData.id, setDestinations, setPendingDests);
         }).catch((err) => {
             console.error(err);
         });
     }, [tripData.id])
+
+    const navigate = useNavigate();
+    const handlePostClick = (post) => {
+        navigate(`/post/${post}`);
+    }
 
     return (
         <div style={{width: "100%", padding: "4%", marginBottom: "15%"}}>
@@ -55,6 +63,16 @@ export default function TripPage(){
                         </div>
 
                     )}
+                    {tripPosts ? (
+                        <div>
+                            <h2>Posts</h2>
+                            {tripPosts.map((post) => (
+                                <span onClick={() => handlePostClick(post.id)}><PostCard key={post.id} post={post} /></span>
+                            ))}
+                        </div>
+                    ) : (
+                        <h2>Loading Posts..</h2>
+                    )}
                 </div>
             ) : (
                 <h2>Loading Data..</h2>
@@ -64,7 +82,7 @@ export default function TripPage(){
 }
 
 async function getTripPosts(tripID, tripPosts, setTripPosts){
-    const api = `http://172.20.10.4:3000/api/v1/trips/${tripID}/posts`
+    const api = `http://${API_URL}:3000/api/v1/trips/${tripID}/posts`
     fetch(api, {
         method: "GET",
         headers: {
@@ -79,7 +97,7 @@ async function getTripPosts(tripID, tripPosts, setTripPosts){
     }
     ).then((data) => {
         //set trip posts to tripPosts + data
-        setTripPosts(...tripPosts, data)
+        setTripPosts(data)
     }).catch((err) => {
         console.error(err);
     }
@@ -88,7 +106,7 @@ async function getTripPosts(tripID, tripPosts, setTripPosts){
 }
 
 async function getDestinations(tripID, setDestinations, setPendingDests){
-    const api = `http://172.20.10.4:3000/api/v1/trips/${tripID}/destinations`
+    const api = `http://${API_URL}:3000/api/v1/trips/${tripID}/destinations`
     fetch(api, {
         method: "GET",
         headers: {

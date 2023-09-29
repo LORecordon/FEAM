@@ -18,6 +18,9 @@ import {
 } from "@reach/combobox";
 import { UserTrips } from "./UserTrips";
 
+import { API_URL } from "../../constants";
+
+
 const libraries = ['places']
 
 export default function SimpleMap({MapProps}){
@@ -297,7 +300,7 @@ const CreateLocation = ({countryName, position, handleClose, setMarkers, markers
 }
 
 async function postNewLocation({destination, handleClose, setUploadError, setUploading, setMarkers, markers }){
-    fetch('http://172.20.10.4:3000/api/v1/destinations', {
+    fetch(`http://${API_URL}:3000/api/v1/destinations`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem("token")
@@ -336,7 +339,7 @@ async function postNewLocation({destination, handleClose, setUploadError, setUpl
 //Functions to load markers
 
 async function allDestinations(setMarkers, setLoadingMarkers){
-    const res = await fetch("http://172.20.10.4:3000/api/v1/destinations", {
+    const res = await fetch(`http://${API_URL}:3000/api/v1/destinations`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem("token")

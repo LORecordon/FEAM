@@ -32,9 +32,10 @@ function TopNav(props) {
       localStorage.setItem("email", "")
       setAnchorEl(null)
       navigate("/login")
-    } else if (event.currentTarget.id === "login"){
+    } else {
+      console.log("Navigating to " + event.currentTarget.id)
       setAnchorEl(null)
-      navigate("/login")
+      navigate("/" + event.currentTarget.id)
     }
   }
 
@@ -66,8 +67,8 @@ function TopNav(props) {
             }}
 
           >
-            <MenuItem id="profile" onClick={handleClose}>Profile</MenuItem>
-            <MenuItem id="settings" onClick={handleClose}>Settings</MenuItem>
+            <MenuItem id="profile" onClick={handleMenuClick}>Profile</MenuItem>
+            <MenuItem id="settings" onClick={handleMenuClick}>Settings</MenuItem>
             <MenuItem id="logout" onClick={handleMenuClick}>Logout</MenuItem>
           </Menu>
 

@@ -1,0 +1,21 @@
+
+
+.postcontainer{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
+    background-color: #b799ff;
+    box-shadow: 0 0 10px #ccc;
+    
+}
+
+.desc{
+    max-width: 90%;
+    margin-left: 5%;
+}
