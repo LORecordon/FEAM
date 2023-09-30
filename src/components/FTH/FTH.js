@@ -89,11 +89,22 @@ async function getFriend(friendshipToken, lat, setFriend, setButtonVal, setMessa
             console.log("error");
         }
         const data = await res.json();
-        console.log(data)
-        if (data.errors){
-            setFriend(data.friend.email)
-            setMessage(data.errors);
+        if ("errors" in data){
+            console.log(data)
+            if ("friend" in data){
+                setFriend(data.friend.email)
+                setMessage(data.errors);
+            }
+            else{
+                setFriend("Expired Token")
+                setMessage("Token expired. Please try again.")
+                
+            }
         }
+        //if (data.errors){
+        //    setFriend(data.friend.email)
+        //    setMessage(data.errors);
+        //}
         else{
             setFriend(data.friend.email);
             setMessage("Friend added successfully!");

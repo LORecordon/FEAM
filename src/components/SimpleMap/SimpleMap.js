@@ -74,7 +74,7 @@ export default function SimpleMap({MapProps}){
         },
         zoom: 6
       })
-      setCoordsLoaded(false)
+      setCoordsLoaded(true)
     }
 
     if (!isLoaded && !coordLoaded && loadingMarkers) return <SpinnerOfDoom/>
