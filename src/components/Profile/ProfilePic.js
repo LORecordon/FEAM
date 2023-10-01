@@ -33,7 +33,11 @@ export default function ProfilePic() {
                     </div>
                     )
             }
-            <input type="file" id="file" accept="image/*" onChange={handleChange} />
+            
+            <label className="aa">
+                <h4 className="plus">Change avatar</h4>
+                <input type="file" id="file" accept="image/*" onChange={handleChange} />
+            </label>
         </div>
     )
 }
